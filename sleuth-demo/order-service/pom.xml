@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>order-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <!-- 继承父依赖 -->
     <parent>

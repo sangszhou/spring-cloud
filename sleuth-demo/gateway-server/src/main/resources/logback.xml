@@ -149,35 +149,35 @@
     </logger>
 
     <!-- 为 logstash 输出 JSON 格式数据 -->
-    <appender name="LOGSTASH_PATTERN" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <!-- 数据输出目的地 -->
-        <destination>192.168.10.101:9250</destination>
-        <!-- 日志输出编码 -->
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <pattern>
-                    <pattern>
-                        {
-                        "severity": "%level",
-                        "service": "${springAppName:-}",
-                        "trace": "%X{X-B3-TraceId:-}",
-                        "span": "%X{X-B3-SpanId:-}",
-                        "exportable": "%X{X-Span-Export:-}",
-                        "pid": "${PID:-}",
-                        "thread": "%thread",
-                        "class": "%logger{40}",
-                        "rest": "%message"
-                        }
-                    </pattern>
-                </pattern>
-            </providers>
-        </encoder>
-    </appender>
+<!--    <appender name="LOGSTASH_PATTERN" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+<!--        &lt;!&ndash; 数据输出目的地 &ndash;&gt;-->
+<!--        <destination>logstash:9250</destination>-->
+<!--        &lt;!&ndash; 日志输出编码 &ndash;&gt;-->
+<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "severity": "%level",-->
+<!--                        "service": "${springAppName:-}",-->
+<!--                        "trace": "%X{X-B3-TraceId:-}",-->
+<!--                        "span": "%X{X-B3-SpanId:-}",-->
+<!--                        "exportable": "%X{X-Span-Export:-}",-->
+<!--                        "pid": "${PID:-}",-->
+<!--                        "thread": "%thread",-->
+<!--                        "class": "%logger{40}",-->
+<!--                        "rest": "%message"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+<!--    </appender>-->
 
     <!-- 日志输出级别及方式 -->
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="LOGSTASH_PATTERN"/>
+<!--        <appender-ref ref="LOGSTASH_PATTERN"/>-->
         <!--        <appender-ref ref="DEBUG_FILE"/>-->
         <!--        <appender-ref ref="INFO_FILE"/>-->
         <!--        <appender-ref ref="WARN_FILE"/>-->
